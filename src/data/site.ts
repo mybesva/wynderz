@@ -35,7 +35,7 @@ export const company = {
   established: "2013",
   natureOfBusiness: "Trader - Wholesaler/Distributor",
   additionalBusiness: "Factory / Manufacturing",
-  employees: "11 to 25 People",
+  employees: "20 to 50 People",
   legalStatus: "Private Limited",
   annualTurnover: "40 L - 1.5 Cr",
   gstRegistrationDate: "01-07-2017",
@@ -516,7 +516,7 @@ export const whyWynderz = [
 
 export const trustHighlights = [
   { label: "Established", value: company.established },
-  { label: "Employees", value: "11–25" },
+  { label: "Employees", value: "20–50" },
   { label: "GST No.", value: company.gst },
   { label: "IEC", value: company.iec },
 ] as const;

@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import {
   useCallback,
   useEffect,
@@ -12,7 +11,6 @@ import {
   type PointerEvent as ReactPointerEvent,
 } from "react";
 import type { Product } from "@/data/site";
-import { company } from "@/data/site";
 
 const AUTOPLAY_MS = 3000;
 
@@ -29,7 +27,6 @@ export function HeroCarousel({ products }: HeroCarouselProps) {
   const pointerDeltaX = useRef(0);
 
   const count = products.length;
-  const active = products[index];
 
   const goTo = useCallback(
     (next: number) => setIndex(((next % count) + count) % count),
@@ -112,15 +109,9 @@ export function HeroCarousel({ products }: HeroCarouselProps) {
           <div>
             <p className="section-kicker">Homepage Gallery</p>
             <h2 id="carousel-heading" className="display-title mt-2 text-[clamp(1.75rem,3.5vw,2.6rem)]">
-              Product image carousel
+              Machinery in action
             </h2>
           </div>
-          <p
-            className="font-[family-name:var(--font-display)] text-sm font-semibold tracking-[0.08em] text-navy"
-            aria-live="polite"
-          >
-            {String(index + 1).padStart(2, "0")} / {String(count).padStart(2, "0")}
-          </p>
         </div>
 
         <div
@@ -129,7 +120,7 @@ export function HeroCarousel({ products }: HeroCarouselProps) {
           tabIndex={0}
           role="group"
           aria-roledescription="carousel"
-          aria-label={`${index + 1} of ${count}: ${active.name}`}
+          aria-label="Product image carousel"
           onKeyDown={onKeyDown}
           onPointerDown={onPointerDown}
           onPointerMove={onPointerMove}
@@ -143,42 +134,18 @@ export function HeroCarousel({ products }: HeroCarouselProps) {
             {products.map((product, slideIndex) => (
               <article
                 key={product.id}
-                className="grid min-w-full lg:grid-cols-[1.55fr_0.85fr]"
+                className="min-w-full"
                 aria-hidden={slideIndex !== index}
               >
-                <div className="relative aspect-[4/5] bg-surface-low sm:aspect-[16/11] lg:aspect-auto lg:min-h-[560px]">
+                <div className="relative aspect-[4/5] bg-surface-low sm:aspect-[16/9] lg:min-h-[520px]">
                   <Image
                     src={product.image}
-                    alt={product.name}
+                    alt=""
                     fill
-                    sizes="(max-width: 1024px) 100vw, 65vw"
+                    sizes="100vw"
                     className="object-contain object-center p-4 sm:p-8 lg:p-10"
                     priority={slideIndex < 2}
                   />
-                </div>
-                <div className="flex flex-col justify-center border-t border-border bg-card p-6 sm:p-8 lg:border-l lg:border-t-0 lg:p-10">
-                  <p className="text-xs font-semibold uppercase tracking-[0.14em] text-primary">
-                    {product.category}
-                  </p>
-                  <h3 className="mt-3 font-[family-name:var(--font-display)] text-[clamp(1.4rem,2.4vw,2rem)] font-semibold leading-tight text-navy">
-                    {product.name}
-                  </h3>
-                  <p className="mt-4 text-sm leading-relaxed text-muted md:text-base">
-                    {product.summary}
-                  </p>
-                  <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                    <Link href={product.href} className="btn btn-primary">
-                      View Product
-                    </Link>
-                    <a
-                      href={company.enquiryUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn btn-secondary"
-                    >
-                      Enquire Now
-                    </a>
-                  </div>
                 </div>
               </article>
             ))}
@@ -212,7 +179,7 @@ export function HeroCarousel({ products }: HeroCarouselProps) {
                   type="button"
                   role="tab"
                   aria-selected={selected}
-                  aria-label={`Show ${product.name}`}
+                  aria-label={`Show image ${dotIndex + 1}`}
                   aria-controls={regionId}
                   className={`h-2.5 rounded-sm transition-all ${
                     selected ? "w-9 bg-primary" : "w-2.5 bg-border hover:bg-outline"
