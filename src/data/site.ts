@@ -45,6 +45,35 @@ export const company = {
   favicon: "/images/brand/favicon.ico",
 } as const;
 
+/** Landing hero backgrounds — enterprise facility photography */
+export const heroSlides = [
+  {
+    id: "hero-1",
+    name: "Precision CNC filament winding facility",
+    image: "/images/hero/hero-1.jpg",
+  },
+  {
+    id: "hero-2",
+    name: "Advanced industrial winding environment",
+    image: "/images/hero/hero-2.jpg",
+  },
+  {
+    id: "hero-3",
+    name: "Enterprise manufacturing floor",
+    image: "/images/hero/hero-3.jpg",
+  },
+  {
+    id: "hero-4",
+    name: "Composite cylinder filament winding",
+    image: "/images/hero/hero-4.png",
+  },
+  {
+    id: "hero-5",
+    name: "CNC filament winding production line",
+    image: "/images/hero/hero-5.png",
+  },
+] as const;
+
 /** Paste live profile URLs when ready — empty href keeps the icon visible without redirect. */
 export const socialLinks = [
   { id: "youtube", label: "YouTube", href: "" },
@@ -502,12 +531,26 @@ export const trustHighlights = [
   { label: "IEC", value: company.iec },
 ] as const;
 
-export const galleryImages = carouselProducts.map((product) => ({
-  id: product.id,
-  src: product.image,
-  alt: product.name,
-  href: product.href,
-}));
+export const galleryImages = [
+  {
+    id: "multi-spindle-facility",
+    src: "/images/gallery/multi-spindle-winding-machine.png",
+    alt: "Multi-spindle CNC filament winding machine",
+    href: "/products",
+  },
+  {
+    id: "cnc-winding-head",
+    src: "/images/gallery/cnc-winding-head-detail.png",
+    alt: "CNC filament winding head and carriage detail",
+    href: "/products",
+  },
+  ...carouselProducts.map((product) => ({
+    id: product.id,
+    src: product.image,
+    alt: product.name,
+    href: product.href,
+  })),
+];
 
 export const productVideos = [
   { title: "Cnc Filament Winding Machine", youtubeId: "fwjbMVpPW-I" },

@@ -8,11 +8,11 @@ export function AboutSection() {
       <div className="container-page grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
         <div className="relative aspect-[4/5] overflow-hidden rounded-lg border border-border bg-card card-highlight sm:aspect-[5/4] lg:aspect-[4/5]">
           <Image
-            src="/images/products/4-axis-filament-winding-machine-2-spindle.jpeg"
-            alt="4 Axis Filament Winding Machine - 2Spindle"
+            src="/images/gallery/multi-spindle-winding-machine.png"
+            alt="Multi-spindle CNC filament winding machine"
             fill
             sizes="(max-width: 1024px) 100vw, 50vw"
-            className="object-contain p-8"
+            className="object-cover object-center"
           />
         </div>
 

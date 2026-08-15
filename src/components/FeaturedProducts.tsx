@@ -28,11 +28,19 @@ export function FeaturedProducts() {
               >
                 <div className="card-highlight relative aspect-[5/4] overflow-hidden rounded-lg border border-border bg-card">
                   <Image
-                    src={product.image}
+                    src={
+                      index === 0
+                        ? "/images/gallery/cnc-winding-head-detail.png"
+                        : product.image
+                    }
                     alt={product.name}
                     fill
                     sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="object-contain p-8"
+                    className={
+                      index === 0
+                        ? "object-cover object-center"
+                        : "object-contain p-8"
+                    }
                   />
                 </div>
                 <div>

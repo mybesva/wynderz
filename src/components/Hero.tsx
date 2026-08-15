@@ -3,12 +3,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { carouselProducts, company } from "@/data/site";
+import { company, heroSlides } from "@/data/site";
 
-const INTERVAL_MS = 3000;
+const INTERVAL_MS = 4000;
 
 export function Hero() {
-  const slides = carouselProducts.slice(0, 8);
+  const slides = heroSlides;
   const [index, setIndex] = useState(0);
   const [reduceMotion, setReduceMotion] = useState(false);
 
@@ -27,8 +27,6 @@ export function Hero() {
     }, INTERVAL_MS);
     return () => window.clearInterval(id);
   }, [reduceMotion, slides.length]);
-
-  const active = slides[index];
 
   return (
     <section
@@ -50,13 +48,13 @@ export function Hero() {
               fill
               priority={slideIndex === 0}
               sizes="100vw"
-              className="object-cover object-center scale-[1.02]"
+              className="object-cover object-[70%_center] scale-[1.02] md:object-center"
             />
           </div>
         ))}
-        {/* Lighter overlays so machinery stays visible */}
-        <div className="absolute inset-0 bg-gradient-to-r from-brand/70 via-brand/40 to-brand/15" />
-        <div className="absolute inset-0 bg-gradient-to-t from-brand/75 via-transparent to-brand/20" />
+        {/* Keep machinery visible; text side readable */}
+        <div className="absolute inset-0 bg-gradient-to-r from-brand/78 via-brand/45 to-brand/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-brand/70 via-transparent to-brand/25" />
       </div>
 
       <div className="container-page relative z-10 w-full py-16 md:py-24">
@@ -82,14 +80,7 @@ export function Hero() {
             </Link>
           </div>
 
-          <div className="mt-10 flex items-center gap-4">
-            <p className="font-[family-name:var(--font-display)] text-sm font-semibold tracking-[0.08em] text-white/90" aria-live="polite">
-              {String(index + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}
-            </p>
-            <p className="max-w-sm truncate text-xs text-white/65">{active.name}</p>
-          </div>
-
-          <div className="mt-4 flex gap-2" role="tablist" aria-label="Hero background images">
+          <div className="mt-8 flex gap-2" role="tablist" aria-label="Hero background images">
             {slides.map((slide, dotIndex) => (
               <button
                 key={slide.id}
@@ -98,7 +89,9 @@ export function Hero() {
                 aria-selected={dotIndex === index}
                 aria-label={`Show ${slide.name}`}
                 className={`h-1.5 rounded-sm transition-all ${
-                  dotIndex === index ? "w-8 bg-primary-container" : "w-1.5 bg-white/35 hover:bg-white/60"
+                  dotIndex === index
+                    ? "w-8 bg-primary-container"
+                    : "w-1.5 bg-white/35 hover:bg-white/60"
                 }`}
                 onClick={() => setIndex(dotIndex)}
               />
