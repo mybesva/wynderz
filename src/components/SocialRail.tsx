@@ -8,6 +8,11 @@ const brandStyles: Record<
   SocialId,
   { color: string; hoverBg: string; label: string }
 > = {
+  whatsapp: {
+    color: "#25D366",
+    hoverBg: "#25D366",
+    label: "WhatsApp",
+  },
   youtube: {
     color: "#FF0000",
     hoverBg: "#FF0000",
@@ -43,6 +48,12 @@ function SocialIcon({ id }: { id: SocialId }) {
   };
 
   switch (id) {
+    case "whatsapp":
+      return (
+        <svg {...common} fill="currentColor">
+          <path d="M20.5 3.5A11 11 0 0 0 1.9 16.3L1 22.1l5.9-.9A11 11 0 1 0 20.5 3.5zM12 20.2a9.1 9.1 0 0 1-4.7-1.3l-.3-.2-3.5.5.5-3.4-.2-.3A9.2 9.2 0 1 1 12 20.2zm5.1-6.9c-.3-.1-1.6-.8-1.9-.9-.3-.1-.4-.1-.6.1s-.7.9-.8 1c-.2.2-.3.2-.6.1a7.5 7.5 0 0 1-2.2-1.4 8.2 8.2 0 0 1-1.5-1.9c-.2-.3 0-.4.1-.6l.4-.4.2-.4c.1-.1 0-.3 0-.4l-.9-2.1c-.2-.6-.5-.5-.6-.5h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 1.9s.8 2.2.9 2.3c.1.2 1.6 2.6 4 3.5.6.2 1 .4 1.4.5.6.2 1.1.2 1.5.1.5-.1 1.6-.6 1.8-1.3.2-.6.2-1.2.2-1.3 0-.1-.2-.2-.4-.3z" />
+        </svg>
+      );
     case "youtube":
       return (
         <svg {...common} fill="currentColor">
@@ -87,24 +98,21 @@ export function SocialRail() {
           const brand = brandStyles[item.id];
           const ready = Boolean(item.href);
           const className =
-            "group flex h-11 w-11 items-center justify-center transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-primary hover:text-white";
+            "group flex h-11 w-11 items-center justify-center transition-colors hover:!text-white hover:[&_svg]:fill-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-primary";
 
           const style = {
             color: brand.color,
-            ["--brand-bg" as string]: brand.hoverBg,
+            backgroundColor: "transparent",
+            ["--social" as string]: brand.color,
           };
 
           const content = <SocialIcon id={item.id} />;
-          const colorClass =
-            item.id === "twitter"
-              ? "text-[#0F1419] dark:text-[#E7E9EA] hover:!text-white dark:hover:!text-white"
-              : "";
 
           if (!ready) {
             return (
               <li key={item.id} className="border-b border-border last:border-b-0">
                 <span
-                  className={`${className} ${colorClass} cursor-default hover:bg-[var(--brand-bg)]`}
+                  className={`${className} cursor-default hover:bg-[var(--social)]`}
                   style={style}
                   title={`${item.label} — link coming soon`}
                   aria-label={`${item.label} (coming soon)`}
@@ -121,7 +129,7 @@ export function SocialRail() {
                 href={item.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`${className} ${colorClass} hover:bg-[var(--brand-bg)]`}
+                className={`${className} hover:bg-[var(--social)]`}
                 style={style}
                 aria-label={item.label}
                 title={item.label}

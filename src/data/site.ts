@@ -4,13 +4,13 @@ export const company = {
   legalName: "WYNDERZ Pvt. Ltd.",
   tagline: "Filament Winding Machines and Accessories",
   description:
-    "We “WYNDERZ Pvt. Ltd.” are Leading Manufacturers of an extensive array of Filament Winding Machines and Accessories.",
+    "WYNDERZ is a leading manufacturer of advanced Filament Winding Machines and high-performance accessories, delivering reliable and innovative solutions for modern composite manufacturing.",
   about:
     "Established in the year of 2013. We “WYNDERZ Pvt. Ltd.” are a leading Manufacturer, Trader, Distributor and Wholesaler of a wide range of Filament Winder And Hydraulic Extractor etc.",
   aboutExtended:
     "We direct all our activities to cater the expectations of customers by providing them excellent quality products as per their gratification. Moreover, we follow moral business policies and crystal pure transparency in all our transactions to keep healthy relations with the customers.",
-  phone: "08043821752",
-  phoneHref: "tel:08043821752",
+  phone: "+91 96765 43322",
+  phoneHref: "tel:+919676543322",
   address:
     "Plot No: 32 & 33A, SVCIE, Bachupally, Hyderabad, Telangana 500118, India",
   city: "Bachupally, Hyderabad, Telangana",
@@ -48,21 +48,6 @@ export const company = {
 /** Landing hero backgrounds — enterprise facility photography */
 export const heroSlides = [
   {
-    id: "hero-1",
-    name: "Precision CNC filament winding facility",
-    image: "/images/hero/hero-1.jpg",
-  },
-  {
-    id: "hero-2",
-    name: "Advanced industrial winding environment",
-    image: "/images/hero/hero-2.jpg",
-  },
-  {
-    id: "hero-3",
-    name: "Enterprise manufacturing floor",
-    image: "/images/hero/hero-3.jpg",
-  },
-  {
     id: "hero-4",
     name: "Composite cylinder filament winding",
     image: "/images/hero/hero-4.png",
@@ -76,11 +61,16 @@ export const heroSlides = [
 
 /** Paste live profile URLs when ready — empty href keeps the icon visible without redirect. */
 export const socialLinks = [
-  { id: "youtube", label: "YouTube", href: "" },
-  { id: "linkedin", label: "LinkedIn", href: "" },
-  { id: "instagram", label: "Instagram", href: "" },
-  { id: "facebook", label: "Facebook", href: "" },
-  { id: "twitter", label: "Twitter", href: "" },
+  {
+    id: "whatsapp",
+    label: "WhatsApp",
+    href: "https://wa.me/919676543322?text=Hello%20Wynderz%2C%20I%20would%20like%20to%20enquire%20about%20filament%20winding%20machines.",
+  },
+  { id: "youtube", label: "YouTube", href: "https://www.youtube.com/@wynderz2157" },
+  { id: "linkedin", label: "LinkedIn", href: "https://www.linkedin.com/company/wynderz/" },
+  { id: "instagram", label: "Instagram", href: "https://www.instagram.com/wynderzindia/" },
+  { id: "facebook", label: "Facebook", href: "https://www.facebook.com/wynderz" },
+  { id: "twitter", label: "Twitter", href: "https://x.com/wynderzindia" },
 ] as const;
 
 export const contactPerson = {
@@ -275,7 +265,7 @@ export const navLinks: readonly NavLink[] = [
       },
       {
         label: "Call sales",
-        href: "tel:08043821752",
+        href: "tel:+919676543322",
         description: "Speak directly with the Wynderz sales team",
         icon: "phone",
       },
@@ -559,16 +549,6 @@ export const productVideos = [
   { title: "4 Axis Filament Winding Machine 2 Spindle", youtubeId: "99FdM6WcMTU" },
   { title: "FRP Pipe Filament Winding Machines", youtubeId: "WrFkWV6kZCk" },
 ] as const;
-
-export const paymentModes = [
-  "Cash",
-  "Credit Card",
-  "Cheque",
-  "Bank Transfer",
-  "Online",
-] as const;
-
-export const shipmentModes = ["By Road"] as const;
 
 export function getProductById(id: string) {
   return allProducts.find((product) => product.id === id);
