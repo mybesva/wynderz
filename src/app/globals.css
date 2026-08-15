@@ -1,0 +1,416 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f7f9fb;
+  --foreground: #191c1e;
+  --text-main: #232930;
+  --muted: #5b6470;
+  --surface: #f7f9fb;
+  --surface-low: #f2f4f6;
+  --surface-container: #eceef0;
+  --white: #ffffff;
+  --card: #ffffff;
+  --border: #e2e8f0;
+  --brand: #101827;
+  --navy: #101827;
+  --navy-soft: #1a2436;
+  --primary: #506600;
+  --primary-container: #a4c639;
+  --on-primary: #ffffff;
+  --primary-fixed: #ccf05f;
+  --steel: #585e6c;
+  --outline: #757965;
+  --outline-variant: #c5c9b1;
+  --success: #059669;
+  --focus: #506600;
+  --shadow-soft: 0 12px 40px rgba(16, 24, 39, 0.06);
+  --radius: 0.25rem;
+  --radius-lg: 0.5rem;
+}
+
+html.dark {
+  --background: #0b0f16;
+  --foreground: #f3f6fa;
+  --text-main: #eef2f7;
+  --muted: #b7c0ce;
+  --surface: #121820;
+  --surface-low: #18202b;
+  --surface-container: #1e2734;
+  --white: #ffffff;
+  --card: #1a222e;
+  --border: rgba(255, 255, 255, 0.14);
+  --brand: #101827;
+  --navy: #f3f6fa;
+  --navy-soft: #1a2436;
+  --primary: #b8d94a;
+  --primary-container: #d4f06a;
+  --on-primary: #141a00;
+  --primary-fixed: #e0ff7a;
+  --steel: #c2cad6;
+  --outline: #a0aab8;
+  --outline-variant: #3a4354;
+  --success: #34d399;
+  --focus: #b8d94a;
+  --shadow-soft: 0 12px 40px rgba(0, 0, 0, 0.45);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-text-main: var(--text-main);
+  --color-muted: var(--muted);
+  --color-surface: var(--surface);
+  --color-surface-low: var(--surface-low);
+  --color-surface-container: var(--surface-container);
+  --color-white: var(--white);
+  --color-card: var(--card);
+  --color-border: var(--border);
+  --color-brand: var(--brand);
+  --color-navy: var(--navy);
+  --color-navy-soft: var(--navy-soft);
+  --color-primary: var(--primary);
+  --color-primary-container: var(--primary-container);
+  --color-on-primary: var(--on-primary);
+  --color-primary-fixed: var(--primary-fixed);
+  --color-steel: var(--steel);
+  --color-outline: var(--outline);
+  --color-outline-variant: var(--outline-variant);
+  --color-success: var(--success);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body), system-ui, sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  transition:
+    background-color 200ms ease,
+    color 200ms ease;
+}
+
+::selection {
+  background: var(--primary-container);
+  color: #161e00;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+}
+
+.container-page {
+  width: min(1200px, calc(100% - 2rem));
+  margin-inline: auto;
+}
+
+@media (min-width: 768px) {
+  .container-page {
+    width: min(1200px, calc(100% - 3rem));
+  }
+}
+
+@media (min-width: 1280px) {
+  .container-page {
+    width: min(1200px, calc(100% - 4rem));
+  }
+}
+
+.section-pad {
+  padding-block: clamp(4rem, 9vw, 6.5rem);
+}
+
+.section-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+.section-kicker::before {
+  content: "";
+  width: 1.25rem;
+  height: 2px;
+  background: var(--primary);
+}
+
+.display-title {
+  font-family: var(--font-display), sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--navy);
+}
+
+.accent-rule {
+  width: 2.75rem;
+  height: 3px;
+  background: var(--primary);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  min-height: 2.85rem;
+  padding: 0.75rem 1.35rem;
+  border-radius: var(--radius);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition:
+    opacity 160ms ease,
+    background-color 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: var(--on-primary);
+}
+
+.btn-primary:hover {
+  opacity: 0.92;
+}
+
+.btn-secondary {
+  border: 1px solid var(--navy);
+  color: var(--navy);
+  background: transparent;
+}
+
+.btn-secondary:hover {
+  background: color-mix(in srgb, var(--navy) 6%, transparent);
+}
+
+.btn-light {
+  background: #ffffff;
+  color: #101827;
+}
+
+.btn-light:hover {
+  opacity: 0.94;
+}
+
+.btn-ghost-light {
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #ffffff;
+  background: transparent;
+}
+
+.btn-ghost-light:hover {
+  border-color: #ffffff;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.surface-card {
+  position: relative;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  transition:
+    border-color 200ms ease,
+    box-shadow 220ms ease,
+    transform 220ms ease,
+    background-color 200ms ease;
+}
+
+/* Four-side hover highlight — visible on all borders */
+.surface-card:hover,
+.surface-card-hover:hover,
+.card-highlight:hover {
+  border-color: var(--primary);
+  box-shadow:
+    0 0 0 1px var(--primary),
+    0 12px 36px color-mix(in srgb, var(--primary) 18%, transparent);
+  z-index: 1;
+}
+
+.surface-card-hover:hover {
+  transform: translateY(-2px);
+}
+
+/* Dark-section cards (e.g. Applications) */
+.card-highlight-dark {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition:
+    border-color 200ms ease,
+    box-shadow 220ms ease,
+    background-color 200ms ease,
+    transform 220ms ease;
+}
+
+.card-highlight-dark:hover {
+  border-color: var(--primary-container);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow:
+    0 0 0 1px var(--primary-container),
+    0 14px 40px rgba(0, 0, 0, 0.28);
+  transform: translateY(-2px);
+}
+
+/* Mid-page section atmospheres (not hero / footer) */
+.section-atmosphere {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 80% 55% at 8% 0%, color-mix(in srgb, var(--primary-container) 28%, transparent), transparent 58%),
+    radial-gradient(ellipse 70% 50% at 100% 20%, color-mix(in srgb, var(--primary) 12%, transparent), transparent 55%),
+    linear-gradient(180deg, color-mix(in srgb, var(--surface-low) 70%, var(--card)) 0%, var(--surface) 48%, var(--card) 100%);
+}
+
+.section-atmosphere::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.45;
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--navy) 5%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--navy) 5%, transparent) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.55), transparent 90%);
+  pointer-events: none;
+}
+
+.section-atmosphere-alt {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 60% 45% at 92% 8%, color-mix(in srgb, var(--primary-container) 22%, transparent), transparent 60%),
+    radial-gradient(ellipse 50% 40% at 0% 80%, color-mix(in srgb, var(--primary) 10%, transparent), transparent 55%),
+    linear-gradient(165deg, var(--card) 0%, var(--surface-low) 52%, var(--surface) 100%);
+}
+
+.section-atmosphere-alt::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.35;
+  background-image: radial-gradient(
+    color-mix(in srgb, var(--primary) 16%, transparent) 0.8px,
+    transparent 0.8px
+  );
+  background-size: 22px 22px;
+  pointer-events: none;
+}
+
+.section-atmosphere-deep {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% -10%, color-mix(in srgb, var(--primary) 35%, transparent), transparent 55%),
+    radial-gradient(ellipse 50% 40% at 100% 100%, color-mix(in srgb, var(--primary-container) 18%, transparent), transparent 50%),
+    linear-gradient(180deg, #0d1420 0%, var(--brand) 45%, #0a1018 100%);
+  color: #ffffff;
+}
+
+.section-atmosphere-deep::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.22;
+  background-image:
+    linear-gradient(rgba(164, 198, 57, 0.2) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(164, 198, 57, 0.2) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, #000, transparent);
+  pointer-events: none;
+}
+
+html.dark .section-atmosphere {
+  background:
+    radial-gradient(ellipse 80% 55% at 8% 0%, color-mix(in srgb, var(--primary) 18%, transparent), transparent 58%),
+    radial-gradient(ellipse 70% 50% at 100% 20%, color-mix(in srgb, var(--primary-container) 10%, transparent), transparent 55%),
+    linear-gradient(180deg, #121820 0%, #0e141c 50%, #151d28 100%);
+}
+
+html.dark .section-atmosphere-alt {
+  background:
+    radial-gradient(ellipse 60% 45% at 92% 8%, color-mix(in srgb, var(--primary) 14%, transparent), transparent 60%),
+    linear-gradient(165deg, #151d28 0%, #101820 55%, #18222e 100%);
+}
+
+.reveal {
+  animation: reveal 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.reveal-delay {
+  animation: reveal 800ms cubic-bezier(0.22, 1, 0.36, 1) 100ms both;
+}
+
+.reveal-delay-2 {
+  animation: reveal 850ms cubic-bezier(0.22, 1, 0.36, 1) 180ms both;
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.img-zoom {
+  transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.group:hover .img-zoom {
+  transform: scale(1.04);
+}
